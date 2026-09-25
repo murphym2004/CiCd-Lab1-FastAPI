@@ -34,3 +34,18 @@ def test_bad_student_id_returns_422(client, bad_student_id):
     response = client.post("/api/users", json=user_payload(uid=3, student_id=bad_student_id))
     assert response.status_code == 422
 
+def test_get_user_returns_created_user(client):
+    client.post("/api/users", json=user_payload(uid=10, name="Alice", email="alice@atu.ie"))
+
+    response = client.get("/api/users")
+
+    assert response.status_code == 200
+    data = response.json()
+    assert len(data) == 1
+    assert data[0]["user_id"] == 10
+    assert data[0]["name"] == "Alice"
+    assert data[0]["email"] == "alice@atu.ie"
+
+    
+
+
