@@ -46,6 +46,12 @@ def test_get_user_returns_created_user(client):
     assert data[0]["name"] == "Alice"
     assert data[0]["email"] == "alice@atu.ie"
 
-    
+def test_get_existing_user_returns_200(client):
+    client.post("/api/users", json=user_payload(uid=11))
+
+    response = client.get("/api/users/11")
+
+    assert response.status_code == 200
+    assert response.json()["user_id"] == 11
 
 
