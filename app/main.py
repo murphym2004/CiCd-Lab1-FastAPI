@@ -30,11 +30,12 @@ def get_user(user_id: int):
     for user in users:
         if user.user_id == user_id:
             return user
-    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="user not found")
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
 
 @app.delete("/api/users/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_user(user_id: int):
-    global users
-    users = [user for user in users if user.user_id != user_id]
-    if user_id not in [user.user_id for user in users]:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="user not found")
+    for user in users:
+        if user.user_id == user_id:
+            users.remove(user)
+            return None
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
