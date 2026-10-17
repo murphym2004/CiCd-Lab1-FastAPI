@@ -43,18 +43,21 @@ python -m pytest
 
 app/   # Existing User API
 ├── __init__.py
-├── main.py   # Keep existing user routes
-├── database.py   # Keep get_db / SessionLocal
-├── models.py   # Keep UserDB
-├── schemas.py   # Keep UserCreate / UserRead
-└── product_client.py   # NEW: external HTTP client
-product_service/   # NEW: second FastAPI application
+├── main.py   
+├── database.py   
+├── models.py  
+├── schemas.py   
+└── product_client.py  
+
+product_service/  
 ├── __init__.py
 └── main.py
+
 tests/
-├── conftest.py   # Keep Lab 4 database fixtures
-├── test_users.py   # Keep Lab 4 tests
-└── test_remote_products.py   # NEW: endpoint tests
+├── conftest.py  
+├── test_users.py   
+└── test_remote_products.py  
+
 ---
 
 project-name/
