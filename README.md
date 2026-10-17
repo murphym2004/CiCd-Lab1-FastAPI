@@ -76,4 +76,6 @@ project-name/
 ├── requirements.txt
 ├── README.md
 └── .gitignore
+
+---
 ```
